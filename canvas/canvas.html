@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>canvas</title>
+</head>
+
+<body>
+    <div id="canvas"></div>
+
+    <script>
+        let canvas = document.getElementById('canvas');
+        console.log(canvas)
+        // canvas.width = document.documentElement.clientWidth
+        // canvas.height = document.documentElement.clientHeight
+        // let ctx = canvas.getContext('2d');
+
+        canvas.onclick = (e) => {
+            console.log(e)
+            let div = document.createElement("div")
+            div.style.position = 'absolute'
+            div.style.border = '1px solid red'
+            div.style.width = '5px'
+            div.style.height = '5px'
+            div.style.left = e.clientX + 'px'
+            div.style.top = e.clientY + 'px'
+            div.style.background = 'red'
+            div.style.borderRadius = '50%'
+            canvas.appendChild(div);
+
+        }
+    </script>
+</body>
+
+</html>
