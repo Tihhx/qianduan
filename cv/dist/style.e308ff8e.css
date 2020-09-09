@@ -1,0 +1,42 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+#div1{
+    position: fixed;
+    top:10%;
+    right: 20%;
+}
+#html{
+    width:50%;
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+      }
+    100%{
+         transform: rotate(-360deg);
+        }
+    }
+
+    #div1:hover{
+        transition: 0.5s;  
+        animation: rotate 3s linear infinite; /*开始动画后无限循环，用来控制rotate*/
+    }
+
+
+@media(max-width:500px){
+    #html{
+        width: 100vh;
+        height: 50vh;
+        overflow: auto;
+        word-break: break-all;
+    }
+    #div1 {
+        position: relative;
+        top: 0;
+        right: 0;
+      }
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
