@@ -1,0 +1,2 @@
+*{margin:0;padding:0;box-sizing:border-box}#div1{position:fixed;top:10%;right:20%}#html{width:50%}@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(-1turn)}}#div1:hover{transition:.5s;animation:rotate 3s linear infinite}@media(max-width:500px){#html{width:100vh;height:50vh;overflow:auto;word-break:break-all}#div1{position:relative;top:0;right:0}}
+/*# sourceMappingURL=style.7b875005.css.map */
