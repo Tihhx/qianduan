@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入门</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="one" /> + <input type="text" v-model="two" /> =<input type="text"
+            v-model="jie" /><button v-on:click="add">计算</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                one: "",
+                two: "",
+                jie: "",
+            },
+            methods: {
+                add() {
+                    this.jie = parseInt(this.one) + parseInt(this.two);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
