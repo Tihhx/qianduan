@@ -118,7 +118,71 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-console.log("123");
+/**
+ * date：2020年9月29日16:31:46
+ * 
+ * author: xiong
+ */
+var listObj = JSON.parse(localStorage.getItem("list"));
+var map = listObj || [{
+  logo: 'A',
+  url: "http://acfun.tv/"
+}, {
+  logo: 'B',
+  url: "https://www.bilibili.com/"
+}];
+
+var removeX = function removeX(url) {
+  return url.replace("https://", '').replace("http://", '').replace("www.", '').replace(/\/.*/, '');
+};
+
+function render() {
+  var $siteList = $(".siteList");
+  $siteList.find("li:not(.last)").remove();
+  map.forEach(function (node, index) {
+    if (node.url === '') {
+      return;
+    }
+
+    var last = $(".last");
+    var $li = $("<li>\n            <div class=\"site\">\n                <div class=\"logo\">".concat(removeX(node.url)[0].toUpperCase(), "</div>\n                <div class=\"link\">").concat(removeX(node.url), "</div>\n                <div class=\"close\"><svg class=\"icon\" >\n                <use xlink:href=\"#icon-close\"></use>\n            </svg></div>\n            </div>\n        </li> ")).insertBefore(last);
+    $li.on('click', function () {
+      window.open(node.url);
+    });
+    $li.on('click', '.close', function (e) {
+      e.stopPropagation();
+      map.splice(index, 1);
+      render();
+    });
+  });
+}
+
+render();
+$(".addButton").on("click", function () {
+  var $siteList = $(".siteList");
+  console.log($siteList);
+  var url = window.prompt("请输入要新增的网址:");
+
+  if (url === '') {
+    return;
+  }
+
+  if (url.indexOf('http') !== 0) {
+    url = 'https://' + url;
+  }
+
+  var domain = url.split("/");
+  map.push({
+    logo: url[0],
+    url: url
+  });
+  render();
+});
+
+window.onbeforeunload = function () {
+  var string = JSON.stringify(map);
+  localStorage.setItem("list", string);
+};
 },{}],"C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
