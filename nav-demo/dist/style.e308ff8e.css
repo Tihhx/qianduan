@@ -20,7 +20,7 @@ body{
 }
 
 .globalHeader {
-    margin: 10px;
+    margin: 0px 10px 40px 10px;
 }
 .globalHeader .top {
     height: 50px;
@@ -34,6 +34,14 @@ body{
 .searchForm {
     display: flex;
     justify-content: space-between;
+}
+@media (min-width:500px){
+    .searchForm{
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: start;
+    }
 }
 .searchForm > input{
     width: 100%;
@@ -57,12 +65,23 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+
 .siteList {
     margin: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  @media(min-width:500px){
+    .siteList{
+        justify-content: start;
+        margin-right: -43px;
+    }
+    .siteList li{
+        margin-right: 24px;
+    }
+}
   .siteList .site {
     background: #fff;
     width: 160px;
@@ -78,9 +97,17 @@ body{
       position: absolute;
       top:3px;
       right:3px;
-
+      display: block;    
   }
-
+  
+  .siteList .site:hover .close{
+    display: block; 
+  }
+  @media(min-width:500px){
+    .siteList .site .close{
+        display: none; 
+      }
+  }
   .siteList .site .logo{
       width: 64px;
       height: 64px;

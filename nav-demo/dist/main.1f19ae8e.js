@@ -126,11 +126,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var listObj = JSON.parse(localStorage.getItem("list"));
 var map = listObj || [{
   logo: 'A',
-  url: "http://acfun.tv/"
+  url: "http://www.acfun.cn/"
 }, {
   logo: 'B',
   url: "https://www.bilibili.com/"
 }];
+console.log(map);
 
 var removeX = function removeX(url) {
   return url.replace("https://", '').replace("http://", '').replace("www.", '').replace(/\/.*/, '');
@@ -145,7 +146,7 @@ function render() {
     }
 
     var last = $(".last");
-    var $li = $("<li>\n            <div class=\"site\">\n                <div class=\"logo\">".concat(removeX(node.url)[0].toUpperCase(), "</div>\n                <div class=\"link\">").concat(removeX(node.url), "</div>\n                <div class=\"close\"><svg class=\"icon\" >\n                <use xlink:href=\"#icon-close\"></use>\n            </svg></div>\n            </div>\n        </li> ")).insertBefore(last);
+    var $li = $("<li>\n            <div class=\"site\">\n                <div class=\"logo\">".concat(node.logo, "</div>\n                <div class=\"link\">").concat(removeX(node.url), "</div>\n                <div class=\"close\"><svg class=\"icon\" >\n                <use xlink:href=\"#icon-close\"></use>\n            </svg></div>\n            </div>\n        </li> ")).insertBefore(last);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -171,9 +172,9 @@ $(".addButton").on("click", function () {
     url = 'https://' + url;
   }
 
-  var domain = url.split("/");
+  var logo = removeX(url)[0].toUpperCase();
   map.push({
-    logo: url[0],
+    logo: logo,
     url: url
   });
   render();
@@ -183,6 +184,16 @@ window.onbeforeunload = function () {
   var string = JSON.stringify(map);
   localStorage.setItem("list", string);
 };
+
+$(document).on("keypress", function (e) {
+  var key = e.key;
+
+  for (var i = 0; i < map.length; i++) {
+    if (key.toUpperCase() === map[i].logo.toUpperCase()) {
+      window.open(map[i].url);
+    }
+  }
+});
 },{}],"C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
