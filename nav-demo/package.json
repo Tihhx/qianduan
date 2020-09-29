@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "parcel build index.html --no-minify "
+  },
+  "name": "nav-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
+}
