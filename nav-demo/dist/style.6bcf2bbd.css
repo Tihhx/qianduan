@@ -126,6 +126,7 @@ body{
   .siteList .addButton{
       background: #fff;
       width: 160px;
+      border-radius: 5px;
     }
     .siteList .addButton .icon-wrapper{
         display: flex;
