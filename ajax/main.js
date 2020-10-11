@@ -1,5 +1,4 @@
 
-
 getCss.onclick = () => {
     const rs = new XMLHttpRequest()
     rs.open("GET", "/style.css")
@@ -24,16 +23,17 @@ getJs.onclick = () => {
     rs.send()
 }
 
-getHtml.onclick = () => {
-    const rs = new XMLHttpRequest()
-    rs.open("GET", "3.html")
-    rs.onload = () => {
-        const html = document.createElement("html")
-        html.innerHTML = rs.response
-        document.body.appendChild(html)
-    }
-    rs.send()
-}
+getHtml.onclick = getText("GET", "3.html")
+//=> {
+//     const rs = new XMLHttpRequest()
+//     rs.open("GET", "3.html")
+//     rs.onload = () => {
+//         const html = document.createElement("html")
+//         html.innerHTML = rs.response
+//         document.body.appendChild(html)
+//     }
+//     rs.send()
+// }
 
 getXml.onclick = () => {
     const rs = new XMLHttpRequest()
@@ -57,6 +57,17 @@ getJson.onclick = () => {
             console.log(typeof json)
             console.log(json.name)
         }
+    }
+    rs.send()
+}
+
+function getText(type, url) {
+    const rs = new XMLHttpRequest()
+    rs.open(type, url)
+    rs.onload = () => {
+        const script = document.createElement("html")
+        script.innerHTML = rs.response
+        document.body.appendChild(script)
     }
     rs.send()
 }
